@@ -1,0 +1,24 @@
+@startuml Container
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+LAYOUT_WITH_LEGEND()
+
+title 2. Container diagram for client generation for demo webshop
+
+Person(visitor, "Visitor", "Visiting the website")
+
+
+System_Boundary(webshopsys, "Demo Webshop"){
+    Container(webshop, "Some Webshop site", "ASP.NET MVC", "App")
+    Container(helper, "Client Generator", "Console", "App")
+}
+
+System_Boundary(conv, "PetStore", ""){
+    Container_Ext(petapi, "PetstoreAPI", "Web API", "API for Petstore")
+}
+
+Rel(visitor, webshop, "visits, sends chat")
+Rel(webshop, petapi, "sends, receives data")
+Rel_U(helper, webshop, "generates client")
+Rel_L(petapi, helper, "openapi yaml")
+
+@enduml
