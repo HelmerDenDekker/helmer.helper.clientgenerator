@@ -16,7 +16,7 @@ System_Boundary(conv, "PetStore", ""){
     Container_Ext(petapi, "PetstoreAPI", "Web API", "API for Petstore")
 }
 
-Rel(visitor, webshop, "visits, sends chat")
+Rel(visitor, webshop, "visits")
 Rel(webshop, petapi, "sends, receives data")
 Rel_U(helper, webshop, "generates client")
 Rel_L(petapi, helper, "openapi yaml")
