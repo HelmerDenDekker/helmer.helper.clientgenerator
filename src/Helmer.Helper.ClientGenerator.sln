@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.Helper.ClientGenerator", "Helmer.Helper.ClientGenerator\Helmer.Helper.ClientGenerator.csproj", "{47EA6BC5-7C37-496A-AE8D-C6CFB12489EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.Demo.PetStore.Integration", "Helmer.Demo.PetStore.Integration\Helmer.Demo.PetStore.Integration.csproj", "{A42FCDD9-7AC1-4D95-8325-F578836CC082}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47EA6BC5-7C37-496A-AE8D-C6CFB12489EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47EA6BC5-7C37-496A-AE8D-C6CFB12489EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47EA6BC5-7C37-496A-AE8D-C6CFB12489EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47EA6BC5-7C37-496A-AE8D-C6CFB12489EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A42FCDD9-7AC1-4D95-8325-F578836CC082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A42FCDD9-7AC1-4D95-8325-F578836CC082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A42FCDD9-7AC1-4D95-8325-F578836CC082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A42FCDD9-7AC1-4D95-8325-F578836CC082}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A657BB0-15F0-4438-A50D-53F3D2D06DF1}
+	EndGlobalSection
+EndGlobal
