@@ -1,6 +1,7 @@
 ﻿using Helmer.Demo.PetStore.ClientGenerator;
 using NSwag;
 using NSwag.CodeGeneration.CSharp;
+using NSwag.Generation.AspNetCore;
 
 // read the nswag.json file
 
@@ -21,12 +22,27 @@ if (rootDirectory == null)
 
 
 // TODO generate document, this feels way to complicated. So for now I am using NSwag.MSBuild to generate the swagger.json for me.
-// var docGeneratorSettings = settingsProvider.Settings.DocumentGenerator.AspNetCoreToOpenApi;
-// var docGenerator = new AspNetCoreOpenApiDocumentGenerator(docGeneratorSettings);
-var clientSettings = settingsProvider.Settings.CodeGenerators.OpenApiToCSharpClientCommand;
-var swaggerPath = Path.Combine(rootDirectory, srcDirectory, projectDirectoryName, clientSettings.Namespace, "swagger.json");
+var docGeneratorSettings = settingsProvider.Settings.DocumentGenerator.AspNetCoreToOpenApi;
+// Load the API assembly
+var apiAssemblyPath = Path.Combine(rootDirectory, srcDirectory, "Helmer.Demo.PetStore.Api", "bin", "Debug", "net8.0", "Helmer.Demo.PetStore.Api.dll");
 
-var document = await OpenApiDocument.FromFileAsync(swaggerPath);
+if (!File.Exists(apiAssemblyPath))
+    throw new FileNotFoundException($"Could not find API assembly at {apiAssemblyPath}");
+
+var apiAssembly = System.Reflection.Assembly.LoadFrom(apiAssemblyPath);
+
+var docGenerator = new AspNetCoreOpenApiDocumentGenerator(docGeneratorSettings);
+var document = await docGenerator.GenerateAsync(apiAssembly);
+//await document.SaveAsync("openapi.json");
+
+var clientSettings = settingsProvider.Settings.CodeGenerators.OpenApiToCSharpClientCommand;
+
+// // this namespace
+// var nameSpace = "Helmer.Demo.PetStore.ClientGenerator";
+// var swaggerPath = Path.Combine(rootDirectory, srcDirectory, projectDirectoryName, nameSpace, "swagger.json");
+//
+// var document = await OpenApiDocument.FromFileAsync(swaggerPath);
+
 
 // generate the client code
 
