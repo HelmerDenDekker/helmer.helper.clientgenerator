@@ -12,11 +12,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GenerateClientFromSpecs", "
 		generateClientFromSpecs\ReadMe.md = generateClientFromSpecs\ReadMe.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GenerateClientFromController", "GenerateClientFromController", "{684F46C9-DC39-4514-895A-85287ED0A92F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GenerateClientFromApiWithMsbuild", "GenerateClientFromApiWithMsbuild", "{684F46C9-DC39-4514-895A-85287ED0A92F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.Demo.PetStore.Api", "generateClientFromController\Helmer.Demo.PetStore.Api\Helmer.Demo.PetStore.Api.csproj", "{54F29255-FCA9-497B-B36D-93669938AB9C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.Demo.PetStore.Client", "generateClientFromController\Helmer.Demo.PetStore.Client\Helmer.Demo.PetStore.Client.csproj", "{313758F1-B940-473D-AE22-EA5C40BE836B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GenerateClientFromApiWithHelper", "GenerateClientFromApiWithHelper", "{C4E8B7A4-4B99-4E14-B532-375D3DF8CA7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.Demo.PetStore.Api", "generateClientFromApiHelper\Helmer.Demo.PetStore.Api\Helmer.Demo.PetStore.Api.csproj", "{11C31034-B97E-47DA-B85D-E00C7E6658D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.Demo.PetStore.Client", "generateClientFromApiHelper\Helmer.Demo.PetStore.Client\Helmer.Demo.PetStore.Client.csproj", "{5F33F8B2-4BF2-4EEC-9869-34472F9D56D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.Demo.PetStore.ClientGenerator", "generateClientFromApiHelper\Helmer.Demo.PetStore.ClientGenerator\Helmer.Demo.PetStore.ClientGenerator.csproj", "{48C86E38-4FA1-477D-8D70-C441134E9A22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +48,18 @@ Global
 		{313758F1-B940-473D-AE22-EA5C40BE836B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{313758F1-B940-473D-AE22-EA5C40BE836B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{313758F1-B940-473D-AE22-EA5C40BE836B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11C31034-B97E-47DA-B85D-E00C7E6658D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11C31034-B97E-47DA-B85D-E00C7E6658D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11C31034-B97E-47DA-B85D-E00C7E6658D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11C31034-B97E-47DA-B85D-E00C7E6658D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F33F8B2-4BF2-4EEC-9869-34472F9D56D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F33F8B2-4BF2-4EEC-9869-34472F9D56D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F33F8B2-4BF2-4EEC-9869-34472F9D56D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F33F8B2-4BF2-4EEC-9869-34472F9D56D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48C86E38-4FA1-477D-8D70-C441134E9A22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48C86E38-4FA1-477D-8D70-C441134E9A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48C86E38-4FA1-477D-8D70-C441134E9A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48C86E38-4FA1-477D-8D70-C441134E9A22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,5 +72,8 @@ Global
 		{47EA6BC5-7C37-496A-AE8D-C6CFB12489EC} = {F467ADF5-83CC-4226-8516-13C00426E7DA}
 		{54F29255-FCA9-497B-B36D-93669938AB9C} = {684F46C9-DC39-4514-895A-85287ED0A92F}
 		{313758F1-B940-473D-AE22-EA5C40BE836B} = {684F46C9-DC39-4514-895A-85287ED0A92F}
+		{11C31034-B97E-47DA-B85D-E00C7E6658D2} = {C4E8B7A4-4B99-4E14-B532-375D3DF8CA7F}
+		{5F33F8B2-4BF2-4EEC-9869-34472F9D56D0} = {C4E8B7A4-4B99-4E14-B532-375D3DF8CA7F}
+		{48C86E38-4FA1-477D-8D70-C441134E9A22} = {C4E8B7A4-4B99-4E14-B532-375D3DF8CA7F}
 	EndGlobalSection
 EndGlobal
