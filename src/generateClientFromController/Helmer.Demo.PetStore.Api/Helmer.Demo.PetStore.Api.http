@@ -1,0 +1,6 @@
+@Helmer.Demo.PetStore.Api_HostAddress = http://localhost:5125
+
+GET {{Helmer.Demo.PetStore.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
