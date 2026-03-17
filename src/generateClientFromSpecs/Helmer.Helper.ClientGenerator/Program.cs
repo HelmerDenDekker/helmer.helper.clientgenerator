@@ -2,7 +2,8 @@
 using NSwag.CodeGeneration.CSharp;
 
 // The project where the client needs to be generated in
-const string integrationDirectory = "Helmer.Demo.PetStore.Integration";
+const string projectDirectoryName = "generateClientFromSpecs";
+const string integrationDirectoryName = "Helmer.Demo.PetStore.Integration";
 
 // The folder where the client needs to be generated in
 const string clientDirectory = "PetStore";
@@ -35,14 +36,14 @@ var settings = new CSharpClientGeneratorSettings
     UseBaseUrl = false,
     CSharpGeneratorSettings =
     {
-        Namespace = $"{integrationDirectory}.{clientDirectory}"
+        Namespace = $"{integrationDirectoryName}.{clientDirectory}"
     }
 };
 
 var generator = new CSharpClientGenerator(document, settings);
 var code = generator.GenerateFile();
 
-var outputDirectory = Path.Combine(rootDirectory, "src", integrationDirectory, clientDirectory);
+var outputDirectory = Path.Combine(rootDirectory, "src", projectDirectoryName, integrationDirectoryName, clientDirectory);
 
 if (!Directory.Exists(outputDirectory))
     Directory.CreateDirectory(outputDirectory);
@@ -52,5 +53,5 @@ var allOneFile = Path.Combine(outputDirectory, $"{clientName}.cs");
 if (File.Exists(allOneFile))
     File.Delete(allOneFile);
 
-using var streamwriter = File.AppendText(allOneFile);
-streamwriter.Write(code);
+using var streamWriter = File.AppendText(allOneFile);
+streamWriter.Write(code);
