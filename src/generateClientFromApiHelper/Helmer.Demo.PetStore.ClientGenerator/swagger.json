@@ -2,11 +2,12 @@
   "x-generator": "NSwag v14.6.3.0 (NJsonSchema v11.5.2.0 (Newtonsoft.Json v13.0.0.0))",
   "openapi": "3.0.0",
   "info": {
-    "title": "My Title",
-    "version": "1.0.0"
+    "title": "Pet Store API",
+    "description": "This is a sample server for a pet store.",
+    "version": "v1"
   },
   "paths": {
-    "/api/v3/pet": {
+    "/Pet": {
       "put": {
         "tags": [
           "Pet"
@@ -118,7 +119,7 @@
         }
       }
     },
-    "/api/v3/pet/findByStatus": {
+    "/Pet/findByStatus": {
       "get": {
         "tags": [
           "Pet"
@@ -162,7 +163,7 @@
         }
       }
     },
-    "/api/v3/pet/findByTags": {
+    "/Pet/findByTags": {
       "get": {
         "tags": [
           "Pet"
@@ -210,7 +211,7 @@
         }
       }
     },
-    "/api/v3/pet/{petId}": {
+    "/Pet/{petId}": {
       "get": {
         "tags": [
           "Pet"
@@ -363,7 +364,7 @@
         }
       }
     },
-    "/api/v3/pet/{petId}/uploadImage": {
+    "/Pet/{petId}/uploadImage": {
       "post": {
         "tags": [
           "Pet"
@@ -424,7 +425,7 @@
         }
       }
     },
-    "/api/v3/store/inventory": {
+    "/Store/inventory": {
       "get": {
         "tags": [
           "Store"
@@ -448,7 +449,7 @@
         }
       }
     },
-    "/api/v3/store/order": {
+    "/Store/order": {
       "post": {
         "tags": [
           "Store"
@@ -500,7 +501,7 @@
         }
       }
     },
-    "/api/v3/store/order/{orderId}": {
+    "/Store/order/{orderId}": {
       "get": {
         "tags": [
           "Store"
@@ -595,7 +596,7 @@
         }
       }
     },
-    "/api/v3/user": {
+    "/User": {
       "post": {
         "tags": [
           "User"
@@ -627,7 +628,7 @@
         }
       }
     },
-    "/api/v3/user/createWithList": {
+    "/User/createWithList": {
       "post": {
         "tags": [
           "User"
@@ -662,7 +663,7 @@
         }
       }
     },
-    "/api/v3/user/login": {
+    "/User/login": {
       "get": {
         "tags": [
           "User"
@@ -712,7 +713,7 @@
         }
       }
     },
-    "/api/v3/user/logout": {
+    "/User/logout": {
       "get": {
         "tags": [
           "User"
@@ -725,7 +726,7 @@
         }
       }
     },
-    "/api/v3/user/{username}": {
+    "/User/{username}": {
       "get": {
         "tags": [
           "User"

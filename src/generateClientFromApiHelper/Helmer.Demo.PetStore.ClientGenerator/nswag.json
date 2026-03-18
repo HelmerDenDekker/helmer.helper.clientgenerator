@@ -3,7 +3,7 @@
   "defaultVariables": null,
   "documentGenerator": {
     "aspNetCoreToOpenApi": {
-      "project": "C:\\Repos\\Helmer\\helmer.helper.clientgenerator\\src\\generateClientFromApiHelper\\Helmer.Demo.PetStore.Api\\Helmer.Demo.PetStore.Api.csproj",
+      "project": "../Helmer.Demo.PetStore.Api.csproj",
       "documentName": "v1",
       "msBuildProjectExtensionsPath": null,
       "configuration": null,

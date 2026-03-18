@@ -1,11 +1,5 @@
-﻿using System.Reflection;
-using Helmer.Demo.PetStore.ClientGenerator;
-using Microsoft.Extensions.DependencyInjection;
-using NSwag;
+﻿using Helmer.Demo.PetStore.ClientGenerator;
 using NSwag.CodeGeneration.CSharp;
-using NSwag.Commands.Generation.AspNetCore;
-using NSwag.Generation;
-using NSwag.Generation.AspNetCore;
 
 // read the nswag.json file
 
@@ -42,16 +36,23 @@ try
 
     var documentGenerator = new DocumentGenerator();
     var docGeneratorSettings = settingsProvider.Settings.DocumentGenerator.AspNetCoreToOpenApi;
-    var document = await documentGenerator.GenerateByCommandAsync(docGeneratorSettings);
+    //var document = await documentGenerator.GenerateByCommandAsync(docGeneratorSettings);
 
 
-// var document = await documentGenerator.GenerateFromFileAsync(Path.Combine(rootDirectory, srcDirectory, projectDirectoryName));
+var document = await documentGenerator.GenerateFromFileAsync(Path.Combine(rootDirectory, srcDirectory, projectDirectoryName));
 
 
 
 // generate the client code
-
-    var generator = new CSharpClientGenerator(document, clientSettings.Settings);
+    var setting = new CSharpClientGeneratorSettings
+    {
+        CSharpGeneratorSettings =
+        {
+            Namespace = clientSettings.Namespace
+        },
+        GenerateClientInterfaces = true,
+    };
+    var generator = new CSharpClientGenerator(document, setting);
     var code = generator.GenerateFile();
 
 

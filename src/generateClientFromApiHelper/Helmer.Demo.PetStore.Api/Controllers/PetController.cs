@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using Helmer.Demo.PetStore.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -5,7 +6,8 @@ namespace Helmer.Demo.PetStore.Api.Controllers;
 
 /// <summary>Everything about your Pets</summary>
 [ApiController]
-[Route("api/v3/pet")]
+[Route("[controller]")]
+[ApiVersion(1)]
 [Produces("application/json")]
 public class PetController : ControllerBase
 {
