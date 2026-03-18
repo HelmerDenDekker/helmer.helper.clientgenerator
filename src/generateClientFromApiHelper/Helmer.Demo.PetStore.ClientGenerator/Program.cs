@@ -18,14 +18,6 @@ while (rootDirectory != null && !Directory.Exists(Path.Combine(rootDirectory, sr
 if (rootDirectory == null)
     throw new FileNotFoundException("Could not find the root directory.");
 
-
-// TODO generate document, this feels way to complicated. So for now I am using NSwag.MSBuild to generate the swagger.json for me.
-
-var projectPath = Path.Combine(rootDirectory, srcDirectory, projectDirectoryName, "Helmer.Demo.PetStore.Api", "Helmer.Demo.PetStore.Api.csproj");
-
-if (!File.Exists(projectPath))
-    throw new FileNotFoundException($"Could not find project file at {projectPath}");
-
 try
 {
     var clientSettings = settingsProvider.Settings.CodeGenerators.OpenApiToCSharpClientCommand;
@@ -35,28 +27,27 @@ try
         throw new FileNotFoundException("Could not find the output directory.");
 
     var documentGenerator = new DocumentGenerator();
-    var docGeneratorSettings = settingsProvider.Settings.DocumentGenerator.AspNetCoreToOpenApi;
+    //var docGeneratorSettings = settingsProvider.Settings.DocumentGenerator.AspNetCoreToOpenApi;
     //var document = await documentGenerator.GenerateByCommandAsync(docGeneratorSettings);
 
 
-var document = await documentGenerator.GenerateFromFileAsync(Path.Combine(rootDirectory, srcDirectory, projectDirectoryName));
+    var document =
+        await documentGenerator.GenerateFromFileAsync(Path.Combine(rootDirectory, srcDirectory, projectDirectoryName));
 
 
-
-// generate the client code
+    // generate the client code
+    // TODO: There is something wrong in the nswag.json settings file.
     var setting = new CSharpClientGeneratorSettings
     {
         CSharpGeneratorSettings =
         {
             Namespace = clientSettings.Namespace
         },
-        GenerateClientInterfaces = true,
+        GenerateClientInterfaces = true
     };
     var generator = new CSharpClientGenerator(document, setting);
     var code = generator.GenerateFile();
-
-
-
+    
     var allOneFile = Path.Combine(outputDirectory, $"{clientSettings.ClassName}.cs");
 
     if (File.Exists(allOneFile))
@@ -70,5 +61,3 @@ catch (Exception e)
     Console.WriteLine(e);
     throw;
 }
-
-
