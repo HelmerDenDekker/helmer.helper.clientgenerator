@@ -32,42 +32,42 @@ var projectPath = Path.Combine(rootDirectory, srcDirectory, projectDirectoryName
 if (!File.Exists(projectPath))
     throw new FileNotFoundException($"Could not find project file at {projectPath}");
 
-var clientSettings = settingsProvider.Settings.CodeGenerators.OpenApiToCSharpClientCommand;
-var outputDirectory = Path.Combine(rootDirectory, srcDirectory, projectDirectoryName, clientSettings.Namespace);
+try
+{
+    var clientSettings = settingsProvider.Settings.CodeGenerators.OpenApiToCSharpClientCommand;
+    var outputDirectory = Path.Combine(rootDirectory, srcDirectory, projectDirectoryName, clientSettings.Namespace);
 
-if (!Directory.Exists(outputDirectory))
-    throw new FileNotFoundException("Could not find the output directory.");
+    if (!Directory.Exists(outputDirectory))
+        throw new FileNotFoundException("Could not find the output directory.");
 
-var docGeneratorSettings = settingsProvider.Settings.DocumentGenerator.AspNetCoreToOpenApi;
-var docGenerator = new AspNetCoreOpenApiDocumentGenerator(docGeneratorSettings);
-
-// get the serviceProvider of the API....
-
-var document = await docGenerator.GenerateAsync(serviceProvider);
-
+    var documentGenerator = new DocumentGenerator();
+    var docGeneratorSettings = settingsProvider.Settings.DocumentGenerator.AspNetCoreToOpenApi;
+    var document = await documentGenerator.GenerateByCommandAsync(docGeneratorSettings);
 
 
+// var document = await documentGenerator.GenerateFromFileAsync(Path.Combine(rootDirectory, srcDirectory, projectDirectoryName));
 
-
-// // this namespace
-// var nameSpace = "Helmer.Demo.PetStore.ClientGenerator";
-// var swaggerPath = Path.Combine(rootDirectory, srcDirectory, projectDirectoryName, nameSpace, "swagger.json");
-//
-// var document = await OpenApiDocument.FromFileAsync(swaggerPath);
 
 
 // generate the client code
 
-var generator = new CSharpClientGenerator(document, clientSettings.Settings);
-var code = generator.GenerateFile();
+    var generator = new CSharpClientGenerator(document, clientSettings.Settings);
+    var code = generator.GenerateFile();
 
 
 
-var allOneFile = Path.Combine(outputDirectory, $"{clientSettings.ClassName}.cs");
+    var allOneFile = Path.Combine(outputDirectory, $"{clientSettings.ClassName}.cs");
 
-if (File.Exists(allOneFile))
-    File.Delete(allOneFile);
+    if (File.Exists(allOneFile))
+        File.Delete(allOneFile);
 
-using var streamWriter = File.AppendText(allOneFile);
-streamWriter.Write(code);
+    using var streamWriter = File.AppendText(allOneFile);
+    streamWriter.Write(code);
+}
+catch (Exception e)
+{
+    Console.WriteLine(e);
+    throw;
+}
+
 

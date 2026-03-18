@@ -11,4 +11,7 @@
         <PackageReference Include="NSwag.AspNetCore" Version="14.6.3" />
     </ItemGroup>
 
+    <Target Name="NSwag" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)' == 'Debug' ">
+        <Exec WorkingDirectory="$(ProjectDir)" EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development" Command="$(NSwagExe_Net100) run nswag.json /variables:Configuration=$(Configuration)" />
+    </Target>
 </Project>
