@@ -4,7 +4,7 @@ using NSwag;
 using NSwag.Commands.Generation.AspNetCore;
 using NSwag.Generation.AspNetCore;
 
-namespace Helmer.Demo.PetStore.ClientGenerator;
+namespace Helmer.PetStore.Nswag.ClientGenerator;
 
 public class DocumentGenerator
 {

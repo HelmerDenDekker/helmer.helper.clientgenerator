@@ -1,4 +1,4 @@
-namespace Helmer.Demo.PetStore.Api.Models;
+namespace Helmer.PetStore.Nswag.Api.Models;
 
 public class Order
 {

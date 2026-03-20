@@ -21,11 +21,5 @@
         </PackageReference>
         <PackageReference Include="NSwag.AspNetCore" Version="14.6.3" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="..\..\generateClientFromSpecs\ReadMe.md">
-        <Link>ReadMe.md</Link>
-      </Content>
-    </ItemGroup>
     
 </Project>

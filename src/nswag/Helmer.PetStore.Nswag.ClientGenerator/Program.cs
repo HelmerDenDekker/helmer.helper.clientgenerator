@@ -1,4 +1,5 @@
 ﻿using Helmer.Demo.PetStore.ClientGenerator;
+using Helmer.PetStore.Nswag.ClientGenerator;
 using NSwag.CodeGeneration.CSharp;
 
 // read the nswag.json file

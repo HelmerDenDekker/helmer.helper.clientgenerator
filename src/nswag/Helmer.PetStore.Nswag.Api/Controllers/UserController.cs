@@ -1,8 +1,8 @@
 using Asp.Versioning;
-using Helmer.Demo.PetStore.Api.Models;
+using Helmer.PetStore.Nswag.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Helmer.Demo.PetStore.Api.Controllers;
+namespace Helmer.PetStore.Nswag.Api.Controllers;
 
 /// <summary>Operations about user</summary>
 [ApiController]
