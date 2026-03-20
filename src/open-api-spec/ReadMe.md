@@ -27,6 +27,7 @@ It is largely deprecated since dotnet 10. I did try it out, and it was sweet. Ho
 
 Kiota is the new way to go.
 I will go and try this sometime in the (near) future.
+[svrooij](https://svrooij.io/2026/03/16/automatic-efficient-api-client-generation-kiota/)
 
 ## OpenApi Generator
 
