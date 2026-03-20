@@ -1,64 +1,70 @@
-﻿using Helmer.Demo.PetStore.ClientGenerator;
-using Helmer.PetStore.Nswag.ClientGenerator;
+﻿using System.CommandLine;
+using System.Reflection;
+using NSwag;
 using NSwag.CodeGeneration.CSharp;
+using NSwag.CodeGeneration.OperationNameGenerators;
 
-// read the nswag.json file
+var rootCommand = new RootCommand();
 
-var settingsProvider = new SettingsProvider();
-await settingsProvider.InitializeAsync();
-
-// I hate to do this...
-const string srcDirectory = "src";
-const string projectDirectoryName = "generateClientFromApiHelper";
-
-var rootDirectory = Path.GetFullPath(".");
-
-while (rootDirectory != null && !Directory.Exists(Path.Combine(rootDirectory, srcDirectory)))
-    rootDirectory = Path.GetDirectoryName(rootDirectory);
-
-if (rootDirectory == null)
-    throw new FileNotFoundException("Could not find the root directory.");
-
-try
+var swaggerFileOption = new Option<FileInfo>("--swaggerFile")
 {
-    var clientSettings = settingsProvider.Settings.CodeGenerators.OpenApiToCSharpClientCommand;
-    var outputDirectory = Path.Combine(rootDirectory, srcDirectory, projectDirectoryName, clientSettings.Namespace);
+    Description = "The path to the swagger JSON definition file"
+};
+rootCommand.Options.Add(swaggerFileOption);
 
-    if (!Directory.Exists(outputDirectory))
-        throw new FileNotFoundException("Could not find the output directory.");
+var outputOption = new Option<FileInfo>("--output")
+{
+    Description = "The path to output the generated file to"
+};
+rootCommand.Options.Add(outputOption);
 
-    var documentGenerator = new DocumentGenerator();
-    //var docGeneratorSettings = settingsProvider.Settings.DocumentGenerator.AspNetCoreToOpenApi;
-    //var document = await documentGenerator.GenerateByCommandAsync(docGeneratorSettings);
+rootCommand.SetAction((parseResult, cancellationToken) =>
+{
+    var output = parseResult.GetValue(outputOption);
+    var swaggerFile = parseResult.GetValue(swaggerFileOption);
+    return DoRootCommand(output, swaggerFile, cancellationToken);
+});
 
+await rootCommand.Parse(args).InvokeAsync();
 
-    var document =
-        await documentGenerator.GenerateFromFileAsync(Path.Combine(rootDirectory, srcDirectory, projectDirectoryName));
+async Task<int> DoRootCommand(FileInfo? output, FileInfo? swaggerFile, CancellationToken cancellationToken1)
+{
+    if (output == null || string.IsNullOrEmpty(output.DirectoryName))
+    {
+        Console.WriteLine("Output option is required.");
+        return 1;
+    }
 
+    if (swaggerFile == null)
+    {
+        Console.WriteLine("Swagger file option is required.");
+        return 1;
+    }
 
-    // generate the client code
-    // TODO: There is something wrong in the nswag.json settings file.
-    var setting = new CSharpClientGeneratorSettings
+    if (Directory.Exists(output.DirectoryName))
+        Directory.Delete(output.DirectoryName, true);
+
+    Console.WriteLine("Ensure output directory: " + output.DirectoryName);
+    Directory.CreateDirectory(output.DirectoryName);
+
+    var swaggerJson = File.ReadAllText(swaggerFile.FullName);
+    var document = await OpenApiDocument.FromJsonAsync(swaggerJson);
+
+    var clientProjectNamespace = Assembly.GetExecutingAssembly().FullName
+        !.Split(',')[0]
+        .Replace(".ClientGenerator", ".Client");
+
+    var settings = new CSharpClientGeneratorSettings
     {
         CSharpGeneratorSettings =
         {
-            Namespace = clientSettings.Namespace
+            Namespace = clientProjectNamespace
         },
         GenerateClientInterfaces = true
     };
-    var generator = new CSharpClientGenerator(document, setting);
+
+    var generator = new CSharpClientGenerator(document, settings);
     var code = generator.GenerateFile();
-    
-    var allOneFile = Path.Combine(outputDirectory, $"{clientSettings.ClassName}.cs");
-
-    if (File.Exists(allOneFile))
-        File.Delete(allOneFile);
-
-    using var streamWriter = File.AppendText(allOneFile);
-    streamWriter.Write(code);
-}
-catch (Exception e)
-{
-    Console.WriteLine(e);
-    throw;
+    File.WriteAllText(output.FullName, code);
+    return 0;
 }

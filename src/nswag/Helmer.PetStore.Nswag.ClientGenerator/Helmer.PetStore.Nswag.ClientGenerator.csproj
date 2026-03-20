@@ -8,9 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="NSwag.AspNetCore" Version="14.6.3" />
       <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.6.3" />
-      <PackageReference Include="NSwag.Commands" Version="14.6.3" />
+      <PackageReference Include="System.CommandLine" Version="2.0.5" />
     </ItemGroup>
 
     <ItemGroup>
