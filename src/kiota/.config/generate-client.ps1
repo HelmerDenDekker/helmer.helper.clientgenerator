@@ -6,12 +6,15 @@ $version = Get-Date -Format "yyyy.M.d.HHmm"
 
 Write-Host $clientProject
 
-Set-Location ../../
+$kiotaRoot = Split-Path -Path $PSScriptRoot -Parent
+$solutionRoot = Split-Path -Path $kiotaRoot -Parent
+
+Set-Location $solutionRoot
 
 Write-Host Restore solution
 dotnet restore
 
-Set-Location kiota
+Set-Location $kiotaRoot
 
 Write-Host Restore dotnet tools
 dotnet tool restore

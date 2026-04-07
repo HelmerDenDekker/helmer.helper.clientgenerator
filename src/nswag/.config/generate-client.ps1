@@ -8,12 +8,15 @@ $version = Get-Date -Format "yyyy.M.d.HHmm"
 
 Write-Host $clientProject
 
-Set-Location ../../
+$nswagRoot = Split-Path -Path $PSScriptRoot -Parent
+$solutionRoot = Split-Path -Path $nswagRoot -Parent
+
+Set-Location $solutionRoot
 
 Write-Host Restore solution
 dotnet restore
 
-Set-Location nswag
+Set-Location $nswagRoot
 
 Write-Host Restore dotnet tools
 dotnet tool restore
