@@ -29,6 +29,7 @@ public class PetController : ControllerBase
     [HttpPost]
     [ProducesResponseType(typeof(Pet), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
     public IActionResult AddPet([FromBody] Pet pet)
     {

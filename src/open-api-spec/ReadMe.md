@@ -30,4 +30,4 @@ I will go and try this sometime in the (near) future.
 
 ## OpenApi Generator
 
-This is another package microsoft recommends.
+This is another package Microsoft recommends.
