@@ -2,7 +2,6 @@
 using System.Reflection;
 using NSwag;
 using NSwag.CodeGeneration.CSharp;
-using NSwag.CodeGeneration.OperationNameGenerators;
 
 var rootCommand = new RootCommand();
 
@@ -27,7 +26,7 @@ rootCommand.SetAction((parseResult, cancellationToken) =>
 
 await rootCommand.Parse(args).InvokeAsync();
 
-async Task<int> DoRootCommand(FileInfo? output, FileInfo? swaggerFile, CancellationToken cancellationToken1)
+async Task<int> DoRootCommand(FileInfo? output, FileInfo? swaggerFile, CancellationToken cancellationToken)
 {
     if (output == null || string.IsNullOrEmpty(output.DirectoryName))
     {
@@ -41,8 +40,8 @@ async Task<int> DoRootCommand(FileInfo? output, FileInfo? swaggerFile, Cancellat
         return 1;
     }
 
-    if (Directory.Exists(output.DirectoryName))
-        Directory.Delete(output.DirectoryName, true);
+    if (File.Exists(output.FullName))
+        File.Delete(output.FullName);
 
     Console.WriteLine("Ensure output directory: " + output.DirectoryName);
     Directory.CreateDirectory(output.DirectoryName);

@@ -9,12 +9,12 @@ https://github.com/aspnet/Announcements/issues/518
 
 Somehow I read somewhere that there were problems using SwashBuckle with newer versions of .NET.    
 It is not mentioned on the Microsoft website, but still seems to be very much alive.  
-Since I was using Nswag for the code generation, and Swashbuckle themselves have lots of documentation, I am not going to add it here.
+Since I was using NSwag for the code generation, and Swashbuckle themselves have lots of documentation, I am not going to add it here.
 
 ## NSwag
 
-I added an example of how to use Nswag. I chose the Nswag.ConsoleCore tool because it can also run in a pipeline.  
-There are a trazillion ways to use Nswag however, so pick your poison.  
+I added an example of how to use NSwag. I chose the NSwag.ConsoleCore tool because it can also run in a pipeline.  
+There are a trazillion ways to use NSwag however, so pick your poison.  
 
 Catch: Many of the issues you will encounter will be caused by misconfigurations. There are so many configuration options, that it is easy to make a mistake.
 
@@ -31,4 +31,4 @@ I will go and try this sometime in the (near) future.
 
 ## OpenApi Generator
 
-This is another package microsoft recommends.
+This is another package Microsoft recommends.

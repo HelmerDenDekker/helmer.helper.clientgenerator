@@ -15,6 +15,9 @@ dotnet restore
 
 Set-Location nswag
 
+Write-Host dotnet restore tools
+dotnet tool restore
+
 # Build generator
 Write-Host Build generator
 dotnet build $generatorProject\$generatorProject.csproj --no-restore
@@ -22,8 +25,6 @@ dotnet build $generatorProject\$generatorProject.csproj --no-restore
 # Build API
 Write-Host Build API
 dotnet build $apiProject\$apiProject.csproj --no-restore
-
-# //TODO Check if version is correct (dotnet nswag version) and or restore the tools (dotnet tool restore)
 
 # Generate swagger.json. Using nswag run with globally installed nswag because of bug: dotnet tool install -g NSwag.ConsoleCore --framework net8.0
 Write-Host Generate swagger.json
@@ -60,5 +61,3 @@ if(Test-Path Env:LocalNugetPath) {
     Move-Item -Path $packPath\* -Destination $localNugetPath.Value -Include *.nupkg, *.snupkg -Force
     Remove-Item -Path $packPath -Recurse
 }
-
-
