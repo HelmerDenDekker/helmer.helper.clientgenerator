@@ -16,7 +16,7 @@ dotnet restore
 Set-Location nswag
 
 Write-Host dotnet restore tools
-dotnet tools restore
+dotnet tool restore
 
 # Build generator
 Write-Host Build generator
