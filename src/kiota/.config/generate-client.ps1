@@ -8,10 +8,13 @@ Write-Host $clientProject
 
 Set-Location ../../
 
-Write-Host dotnet restore solution
+Write-Host Restore solution
 dotnet restore
 
 Set-Location kiota
+
+Write-Host Restore dotnet tools
+dotnet tool restore
 
 # Build API
 Write-Host Build API and generate the openapi json
@@ -45,5 +48,3 @@ if(Test-Path Env:LocalNugetPath) {
     Move-Item -Path $packPath\* -Destination $localNugetPath.Value -Include *.nupkg, *.snupkg -Force
     Remove-Item -Path $packPath -Recurse
 }
-
-

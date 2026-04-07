@@ -10,12 +10,12 @@ Write-Host $clientProject
 
 Set-Location ../../
 
-Write-Host dotnet restore solution
+Write-Host Restore solution
 dotnet restore
 
 Set-Location nswag
 
-Write-Host dotnet restore tools
+Write-Host Restore dotnet tools
 dotnet tool restore
 
 # Build generator
