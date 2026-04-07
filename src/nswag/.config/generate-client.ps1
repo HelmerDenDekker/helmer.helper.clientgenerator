@@ -61,5 +61,3 @@ if(Test-Path Env:LocalNugetPath) {
     Move-Item -Path $packPath\* -Destination $localNugetPath.Value -Include *.nupkg, *.snupkg -Force
     Remove-Item -Path $packPath -Recurse
 }
-
-
