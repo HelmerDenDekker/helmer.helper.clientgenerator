@@ -1,50 +1,37 @@
-$baseNameSpace = "Helmer.PetStore.Nswag"
+$baseNameSpace = "Helmer.PetStore.Kiota"
 $apiProject = "$baseNameSpace.Api"
-$dotnetVersion = "net10.0"
 
 $clientProject = "$baseNameSpace.Client"
-$generatorProject = "$baseNameSpace.ClientGenerator"
 $version = Get-Date -Format "yyyy.M.d.HHmm"
 
 Write-Host $clientProject
 
-$nswagRoot = Split-Path -Path $PSScriptRoot -Parent
-$solutionRoot = Split-Path -Path $nswagRoot -Parent
+$kiotaRoot = Split-Path -Path $PSScriptRoot -Parent
+$solutionRoot = Split-Path -Path $kiotaRoot -Parent
 
 Set-Location $solutionRoot
 
 Write-Host Restore solution
 dotnet restore
 
-Set-Location $nswagRoot
+Set-Location $kiotaRoot
 
 Write-Host Restore dotnet tools
 dotnet tool restore
 
-# Build generator
-Write-Host Build generator
-dotnet build $generatorProject\$generatorProject.csproj --no-restore
-
 # Build API
-Write-Host Build API
+Write-Host Build API and generate the openapi json
 dotnet build $apiProject\$apiProject.csproj --no-restore
 
-# Generate swagger.json. Using nswag run with globally installed nswag because of bug: dotnet tool install -g NSwag.ConsoleCore --framework net8.0
-Write-Host Generate swagger.json
+$openApiFilePath = "$PSScriptRoot\$apiProject.json"
 
-dotnet nswag run .config/nswag.json
-
-$swaggerFilePath = "$PSScriptRoot\swagger.json"
-
-if (-not( Test-Path $swaggerFilePath)){
-    throw "Failed to generate swagger.json"
+if (-not( Test-Path $openApiFilePath)){
+    throw "Failed to generate openapi json"
 }
 
 # Generate client files
 Write-Host Generate client files
-dotnet $generatorProject\bin\Debug\$dotnetVersion\$generatorProject.dll --swaggerFile .config/swagger.json --output $clientProject\Generated\Client.cs
-
-Remove-Item $swaggerFilePath
+dotnet kiota generate -l CSharp -c Client -n $clientProject -d $openApiFilePath -o ./$clientProject/Generated
 
 # Generate nuget package
 Write-Host Generating nuget packages
