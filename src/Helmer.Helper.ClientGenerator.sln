@@ -3,9 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.Helper.ClientGenerator", "Helmer.Helper.ClientGenerator\Helmer.Helper.ClientGenerator.csproj", "{47EA6BC5-7C37-496A-AE8D-C6CFB12489EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.OpenApiSpec.ClientGenerator", "open-api-spec\Helmer.OpenApiSpec.ClientGenerator\Helmer.OpenApiSpec.ClientGenerator.csproj", "{47EA6BC5-7C37-496A-AE8D-C6CFB12489EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.Demo.PetStore.Integration", "Helmer.Demo.PetStore.Integration\Helmer.Demo.PetStore.Integration.csproj", "{A42FCDD9-7AC1-4D95-8325-F578836CC082}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.OpenApiSpec.Client", "open-api-spec\Helmer.OpenApiSpec.Client\Helmer.OpenApiSpec.Client.csproj", "{A42FCDD9-7AC1-4D95-8325-F578836CC082}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "open-api-spec", "open-api-spec", "{F467ADF5-83CC-4226-8516-13C00426E7DA}"
+	ProjectSection(SolutionItems) = preProject
+		open-api-spec\ReadMe.md = open-api-spec\ReadMe.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nswag", "nswag", "{C4E8B7A4-4B99-4E14-B532-375D3DF8CA7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.PetStore.Nswag.Api", "nswag\Helmer.PetStore.Nswag.Api\Helmer.PetStore.Nswag.Api.csproj", "{11C31034-B97E-47DA-B85D-E00C7E6658D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.PetStore.Nswag.Client", "nswag\Helmer.PetStore.Nswag.Client\Helmer.PetStore.Nswag.Client.csproj", "{5F33F8B2-4BF2-4EEC-9869-34472F9D56D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.PetStore.Nswag.ClientGenerator", "nswag\Helmer.PetStore.Nswag.ClientGenerator\Helmer.PetStore.Nswag.ClientGenerator.csproj", "{48C86E38-4FA1-477D-8D70-C441134E9A22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kiota", "kiota", "{846AB25B-4A2F-440A-9C59-78129130A785}"
+	ProjectSection(SolutionItems) = preProject
+		kiota\ReadMe.md = kiota\ReadMe.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.PetStore.Kiota.Api", "kiota\Helmer.PetStore.Kiota.Api\Helmer.PetStore.Kiota.Api.csproj", "{D0677B52-CC9A-4770-B1A9-5E6A780A647A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helmer.PetStore.Kiota.Client", "kiota\Helmer.PetStore.Kiota.Client\Helmer.PetStore.Kiota.Client.csproj", "{20764E62-8937-418A-A389-30CFFCDDC2E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,11 +43,40 @@ Global
 		{A42FCDD9-7AC1-4D95-8325-F578836CC082}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A42FCDD9-7AC1-4D95-8325-F578836CC082}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A42FCDD9-7AC1-4D95-8325-F578836CC082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11C31034-B97E-47DA-B85D-E00C7E6658D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11C31034-B97E-47DA-B85D-E00C7E6658D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11C31034-B97E-47DA-B85D-E00C7E6658D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11C31034-B97E-47DA-B85D-E00C7E6658D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F33F8B2-4BF2-4EEC-9869-34472F9D56D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F33F8B2-4BF2-4EEC-9869-34472F9D56D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F33F8B2-4BF2-4EEC-9869-34472F9D56D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F33F8B2-4BF2-4EEC-9869-34472F9D56D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48C86E38-4FA1-477D-8D70-C441134E9A22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48C86E38-4FA1-477D-8D70-C441134E9A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48C86E38-4FA1-477D-8D70-C441134E9A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48C86E38-4FA1-477D-8D70-C441134E9A22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0677B52-CC9A-4770-B1A9-5E6A780A647A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0677B52-CC9A-4770-B1A9-5E6A780A647A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0677B52-CC9A-4770-B1A9-5E6A780A647A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0677B52-CC9A-4770-B1A9-5E6A780A647A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20764E62-8937-418A-A389-30CFFCDDC2E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20764E62-8937-418A-A389-30CFFCDDC2E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20764E62-8937-418A-A389-30CFFCDDC2E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20764E62-8937-418A-A389-30CFFCDDC2E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A657BB0-15F0-4438-A50D-53F3D2D06DF1}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A42FCDD9-7AC1-4D95-8325-F578836CC082} = {F467ADF5-83CC-4226-8516-13C00426E7DA}
+		{47EA6BC5-7C37-496A-AE8D-C6CFB12489EC} = {F467ADF5-83CC-4226-8516-13C00426E7DA}
+		{11C31034-B97E-47DA-B85D-E00C7E6658D2} = {C4E8B7A4-4B99-4E14-B532-375D3DF8CA7F}
+		{5F33F8B2-4BF2-4EEC-9869-34472F9D56D0} = {C4E8B7A4-4B99-4E14-B532-375D3DF8CA7F}
+		{48C86E38-4FA1-477D-8D70-C441134E9A22} = {C4E8B7A4-4B99-4E14-B532-375D3DF8CA7F}
+		{D0677B52-CC9A-4770-B1A9-5E6A780A647A} = {846AB25B-4A2F-440A-9C59-78129130A785}
+		{20764E62-8937-418A-A389-30CFFCDDC2E6} = {846AB25B-4A2F-440A-9C59-78129130A785}
 	EndGlobalSection
 EndGlobal
